@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mani | Frontend Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Mani</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  
+   <section id="home" class="hero">
+    <img src="./Img/IMG_20241123_222626_009.jpg" alt=" my phote">
+   <h1>Hi, I'm Mani</h1>
+    <p>Experienced web and software developer proficient in HTML, CSS, SQL,
+       JavaScript, Python, and Java. <br>
+       Committed to continuous growth and userfocused application development. <br> Skilled in problem-solving, clean coding,
+       and performance optimization.
+</p>
+    <a href="#projects" class="btn">View Projects</a>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div>HTML5</div>
+      <div>CSS3</div>
+      <div>JavaScript</div>
+      <div>Responsive Design</div>
+      <div>Git & GitHub</div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Web Design</h3>
+        <p>Clean, responsive and modern layouts.</p>
+      </div>
+      <div class="card">
+        <h3>Frontend Dev</h3>
+        <p>Pixel-perfect frontend with HTML, CSS, JS.</p>
+      </div>
+      <div class="card">
+        <h3>Portfolio Setup</h3>
+        <p>Create and deploy personal websites.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="./Img/10.jpg" alt="Project 1">
+        <h3>Delhi Public School</h3>
+        <a href="https://github.com/Manireddy67/student-grade/blob/main/StudentGradeCalculator.java" target="_blank">Student Grading System</a>
+      </div>
+      <div class="project">
+        <img src="./Img/qiuz game.png" alt="Project 2">
+        <h3>Games</h3>
+        <a href="https://github.com/Manireddy67/quizgame/blob/main/quizgame.py" target="_blank">Quiz Game</a>
+      </div>
+      <div class="project">
+        <img src="./Img/wedding planning.png" alt="Project 3">
+        <h3>Wedding planning </h3>
+        <a href="https://github.com/adityaC108/MadeInHeaven/blob/main/index.html" target="_blank">Made In Heaven - Wedding Applicatio</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-div">
+      <div class="contact-form">
+        <h3>Contact Form</h3>
+        <form action="/contact" id="contactForm" method="POST">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message" id="message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+        
+      <div class="contact-detail">
+        <h3>Contact Details</h3>
+        <p><i class="fa fa-phone"></i> +91 9505386960</p>
+        <p><i class="fa fa-envelope"></i> manikantareddy1422@gmail.com</p>
+
+        <div class="social-icons">
+          <p><i class="fa-brands fa-linkedin"></i><a href="www.linkedin.com/in/cherukupalli-manikanta-752079323" target="_blank"> Linkedin</a></p>
+          <p><i class="fa-brands fa-github"></i><a href="https://github.com/Manireddy67" target="_blank">github</a></p>
+          <p><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/mani_reddy_95/" target="_blank">Instagram</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+                  
+  <footer>
+    <p>© 2025 Mani | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // ContactForm Listener
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Make a POST request to your server for form submission
+            fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert('Message Submitted Successfully!');
+                    form.reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch((error) => console.error('Error:', error));
+        });
+    });
+  </script>
+</body>
+</html>
